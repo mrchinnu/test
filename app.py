@@ -44,7 +44,7 @@ def index():
     if pred>=0 and pred<=3:
         return jsonify("GRADE F:FAIL")
     elif pred>=4 and pred<=7:
-        return jsonify("GRADE D:")
+        return jsonify("GRADE D:BELOW AVERAGE")
     elif pred>=7 and pred<=11:
         return jsonify("GRADE C:AVERAGE")
     elif pred>=12 and pred<=16:
