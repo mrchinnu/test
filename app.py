@@ -40,7 +40,18 @@ def index():
     m31=int(request.args['m31'])
     m32=int(request.args['m32'])
     pred = model.predict(np.array([m1,m2,m3,m4,m5,m6,m7,m8,m9,m0,m11,m12,m13,m14,m15,m16,m17,m18,m19,m20,m21,m22,m23,m24,m25,m26,m27,m28,m29,m30,m31,m32]).reshape(1,32))
-
-    return jsonify(str(pred))
+    pred=np.round(pred);
+    if pred>=0 and pred<=3:
+        return jsonify("GRADE F:FAIL")
+    elif pred>=4 and pred<=7:
+        return jsonify("GRADE D:")
+    elif pred>=7 and pred<=11:
+        return jsonify("GRADE C:AVERAGE")
+    elif pred>=12 and pred<=16:
+        return jsonify("GRADE B:GOOD")
+    elif pred>=17 and pred<=20:
+        return jsonify("GRADE A:EXCELLENT")
+    else:
+        return jsonify("WRONG INPUT")
 if __name__ == "__main__":
     app.run(debug=True)
